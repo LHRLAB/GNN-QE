@@ -1,8 +1,8 @@
-output_dir: ~/scratch/experiments/
+output_dir: /home/luohaoran/github/GNN-QE/scratch/experiments/
 
 dataset:
   class: FB15k237LogicalQuery
-  path: ~/kg-datasets/
+  path: /home/luohaoran/github/GNN-QE/kg-datasets/
 
 task:
   class: LogicalQuery
