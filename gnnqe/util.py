@@ -80,15 +80,16 @@ def load_config(cfg_file, context=None):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--config", help="yaml configuration file", required=True)
+    parser.add_argument("-c", "--config", help="yaml configuration file", default="config/fb15k237.yaml")
     parser.add_argument("-s", "--seed", help="random seed for PyTorch", type=int, default=1024)
 
     args, unparsed = parser.parse_known_args()
     # get dynamic arguments defined in the config file
-    vars = detect_variables(args.config)
+    # vars = detect_variables(args.config)
     parser = argparse.ArgumentParser()
-    for var in vars:
-        parser.add_argument("--%s" % var, required=True)
+    parser.add_argument("--gpus", default="[0]")
+    # for var in vars:
+    #     parser.add_argument("--%s" % var, required=True)
     vars = parser.parse_known_args(unparsed)[0]
     vars = {k: utils.literal_eval(v) for k, v in vars._get_kwargs()}
 
